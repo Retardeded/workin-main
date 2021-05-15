@@ -116,7 +116,7 @@ public class RESTClient {
 
     private void displayAvatar(int id){
         byte[] result = null;
-        ResteasyWebTarget target = resteasyClient.target("http://localhost:8080/rest-api/api/students/"+id+"/avatar");
+        ResteasyWebTarget target = resteasyClient.target("http://localhost:8080/rest-api/api/students/"+id+"/picture");
         System.out.println("Getting avatar of student with id "+id);
         Response response = target.request().get();
         int responseStatus = response.getStatus();
@@ -162,10 +162,12 @@ public class RESTClient {
 
         //adding new student
         List<String> courses = new ArrayList<>();
-        courses.add("SOA");
-        courses.add("Kompilatory");
-        Student student = new Student();
+        courses.add("Badania operacyjne");
+        courses.add("Prawo autorskie");
+        Student student = new Student("Jacek",301111, "defaultAvatar.jpg", courses);
+        Student student22 = new Student("Jacek2",301112, "defaultAvatar.jpg", courses);
         consumer.addStudent(student);
+        consumer.addStudent(student22);
 
         //printing with filtering
         MultivaluedMap<String, Object> query = new MultivaluedMapImpl<>();
@@ -175,22 +177,27 @@ public class RESTClient {
             System.out.println(student2.toString());
         }
 
-        //printing student with id 3
-        System.out.println("\nStudent o id 1");
-        System.out.println(consumer.getStudentById(1).toString());
+        //printing student with id 303030
+        System.out.println("\nStudent o id 303030");
+        System.out.println(consumer.getStudentById(303030).toString());
 
         //displaying avatar
         System.out.println("\n");
-        consumer.displayAvatar(1);
+        consumer.displayAvatar(303030);
 
         //deleting previously added student
         System.out.println("\n");
-        consumer.removeStudent(2);
+        consumer.removeStudent(303033);
 
 
         //getting student in ProtoBuf
         System.out.println("\n");
-        System.out.println(consumer.getStudentByIdProto(1));
+        System.out.println(consumer.getStudentByIdProto(303030));
+
+
+        for(Student student3 : consumer.getAllStudents(query)){
+            System.out.println(student3.toString());
+        }
 
         consumer.endSession();
     }

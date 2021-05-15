@@ -12,7 +12,7 @@ public class Student {
 
     private String name;
     private Integer album;
-    private String picturePath;
+    private String picturePath = "defaultPicture.jpg";
     private List<String> courses;
 
 
