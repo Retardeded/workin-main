@@ -1,0 +1,11 @@
+pl\edu\agh\rest\model\StudentProto$Student$1.class
+pl\edu\agh\rest\model\StudentProto.class
+pl\edu\agh\rest\client\RESTClient$1.class
+pl\edu\agh\rest\model\StudentProto$StudentOrBuilder.class
+pl\edu\agh\rest\protobuf\StudentMessageWriter.class
+pl\edu\agh\rest\model\StudentProto$Student.class
+pl\edu\agh\rest\model\StudentProto$Student$Builder.class
+pl\edu\agh\rest\model\Student.class
+pl\edu\agh\rest\client\RESTClient.class
+pl\edu\agh\rest\model\Student$Builder.class
+pl\edu\agh\rest\model\StudentsDAO.class

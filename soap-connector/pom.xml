@@ -215,7 +215,7 @@
                         </wsdlUrl>
                     </wsdlUrls>
                     <keep>true</keep>
-                    <packageName>pl.edu.agh.soa</packageName>
+                    <packageName>pl.edu.agh.rest</packageName>
                     <sourceDestDir>src/main/java</sourceDestDir>
                 </configuration>
             </plugin>

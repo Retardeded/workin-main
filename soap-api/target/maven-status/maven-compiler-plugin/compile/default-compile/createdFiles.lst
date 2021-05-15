@@ -1,2 +1,2 @@
-pl\edu\agh\soa\lab\StudentsList.class
-pl\edu\agh\soa\lab\StudentService.class
+pl\edu\agh\rest\lab\StudentService.class
+pl\edu\agh\rest\lab\StudentsList.class
