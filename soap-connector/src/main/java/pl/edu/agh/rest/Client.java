@@ -23,7 +23,7 @@ public class Client {
         for(Student student : studentService.getAllStudents().getStudent()) {
             System.out.print(student.getAlbum() + ", " + student.getName() + ", ");
             if (student.getCourses() != null){
-                System.out.print(student.getCourses().getCourse()+"\n");
+                System.out.print(student.getCourses().courses+"\n");
             }
             else{
                 System.out.println("Brak Kursów");

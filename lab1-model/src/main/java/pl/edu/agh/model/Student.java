@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @XmlType(propOrder={"name","album","picturePath","courses"})
 public class Student {
 
@@ -15,37 +16,57 @@ public class Student {
     private List<String> courses;
 
 
-    @XmlElement(name = "name")
+    public Student() {
+    }
+
+    public Student(String name, int album) {
+        this.name = name;
+        this.album = album;
+    }
+
+    public void setAlbum(int album) {
+        this.album = album;
+    }
+
+    public Student(String name, int album, List<String> courses) {
+        this(name, album);
+        this.courses = courses;
+    }
+
+    public Student(String name, int album, String picturePath) {
+        this(name, album);
+        this.picturePath = picturePath;
+    }
+
+    public Student(String name, int album, String picturePath, List<String> courses) {
+        this(name, album, picturePath);
+        this.courses = courses;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getAlbum() {
+        return album;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    @XmlElementWrapper(name = "courses")
+    @XmlElement(name = "courses")
+    public List<String> getCourses() {
+        return courses;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @XmlElement(name = "album")
-    public int getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Integer album) {
-        this.album = album;
-    }
-
-    @XmlElement(name = "picturePath")
-    public String getPicturePath() {
-        return picturePath;
-    }
-
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
-    }
-
-    @XmlElementWrapper(name = "courses")
-    @XmlElement(name = "course")
-    public List<String> getCourses() {
-        return courses;
     }
 
     public void setCourses(List<String> courses) {
@@ -103,4 +124,15 @@ public class Student {
         }
     }
 
+    @Override
+    public String toString() {
+        String result = this.getAlbum() + ", " + this.getName() + ", ";
+        if (this.getCourses() != null){
+            result += this.getCourses();
+        }
+//        else{
+//            result += "";
+//        }
+        return result;
+    }
 }

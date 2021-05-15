@@ -65,7 +65,9 @@ public class RESTClient {
         Response response = target.request().get();
         int responseStatus = response.getStatus();
         if(responseStatus == 200) {
+            System.out.println("200");
             result = response.readEntity(new GenericType<List<Student>>() {});
+            System.out.println("200+");
         }
         response.close();
 
@@ -151,7 +153,7 @@ public class RESTClient {
 
     public static void main(String[] args) {
 
-        RESTClient consumer = new RESTClient("user1","user1");
+        RESTClient consumer = new RESTClient("user3","user3");
         //printing all students
         System.out.println("\nWszyscy studenci (id, imię, wiek, przedmioty):");
         for(Student student : consumer.getAllStudents(null)){
@@ -174,21 +176,21 @@ public class RESTClient {
         }
 
         //printing student with id 3
-        System.out.println("\nStudent o id 3");
-        System.out.println(consumer.getStudentById(3).toString());
+        System.out.println("\nStudent o id 1");
+        System.out.println(consumer.getStudentById(1).toString());
 
         //displaying avatar
         System.out.println("\n");
-        consumer.displayAvatar(3);
+        consumer.displayAvatar(1);
 
         //deleting previously added student
         System.out.println("\n");
-        consumer.removeStudent(6);
+        consumer.removeStudent(2);
 
 
         //getting student in ProtoBuf
         System.out.println("\n");
-        System.out.println(consumer.getStudentByIdProto(2));
+        System.out.println(consumer.getStudentByIdProto(1));
 
         consumer.endSession();
     }

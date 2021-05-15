@@ -31,18 +31,19 @@ public class StudentRestService {
                     responseContainer = "List")
     })
     public Response getAllStudents(
-            @QueryParam("name") String name,
-            @QueryParam("age") int age,
-            @QueryParam("course") List<String> courses
+            @QueryParam("name") String name
+            //@QueryParam("course") List<String> courses
     ) {
+        System.out.println("300");
         List<Student> resultList = studentList.getAllStudents();
+        System.out.println(resultList);
         if (name != null)
             resultList = resultList.stream().filter(student -> student.getName().equals(name)).
                     collect(Collectors.toList());
-        if (courses != null)
-            for (String course : courses) {
-                resultList = resultList.stream().filter(student -> student.getCourses().contains(course)).collect(Collectors.toList());
-            }
+        //if (courses != null)
+        //for (String course : courses) {
+        //        resultList = resultList.stream().filter(student -> student.getCourses().contains(course)).collect(Collectors.toList());
+        //    }
         if (resultList.size() == 0)
             return Response.status(Response.Status.NOT_FOUND).entity("No students found").build();
         return Response.status(Response.Status.OK).entity(resultList).build();
@@ -51,7 +52,7 @@ public class StudentRestService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{album}")
-    @ApiOperation("Returns student with given ID")
+    @ApiOperation("Returns student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student found"),
             @ApiResponse(code = 404, message = "Student with given id not found")
@@ -89,7 +90,7 @@ public class StudentRestService {
     @JWTTokenNeeded
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ApiOperation("Updates student with given id")
+    @ApiOperation("Updates student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student updated"),
             @ApiResponse(code = 404, message = "Student with given id does not exist")

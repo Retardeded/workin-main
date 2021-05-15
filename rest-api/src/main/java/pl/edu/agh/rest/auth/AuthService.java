@@ -62,7 +62,7 @@ public class AuthService {
     }
 
     private boolean authenticate(String login, String password) throws SecurityException {
-        if ("user1".equals(login) && "user1".equals(password)) {
+        if ("user3".equals(login) && "user3".equals(password)) {
             return true;
         } else {
             throw new SecurityException("Invalid user/password");

@@ -7,7 +7,7 @@ public class StudentsList {
     private List<Student> students;
 
     public StudentsList() {
-        students = new ArrayList<>();
+        students = new ArrayList<Student>();
     }
 
     public List<Student> getAllStudents(){
