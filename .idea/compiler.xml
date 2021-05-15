@@ -6,18 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rest-connector" />
         <module name="soap-connector" />
+        <module name="rest-api" />
         <module name="lab1-ear" />
         <module name="lab1-model" />
-        <module name="lab1-web" />
         <module name="soap-api" />
         <module name="zadanie1" />
         <module name="zadanko1.1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="rest-api" target="11" />
-      <module name="rest-connector" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
