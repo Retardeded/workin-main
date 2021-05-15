@@ -5,6 +5,7 @@ import pl.edu.agh.model.StudentsList;
 import pl.edu.agh.rest.auth.JWTTokenNeeded;
 import pl.edu.agh.model.Student;
 import pl.edu.agh.model.StudentProto;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@EnableSwagger2
 @Path("/students")
 @Api(value = "Students API")
 public class StudentRestService {
@@ -34,7 +36,6 @@ public class StudentRestService {
             @QueryParam("name") String name
             //@QueryParam("course") List<String> courses
     ) {
-        System.out.println("300");
         List<Student> resultList = studentList.getAllStudents();
         System.out.println(resultList);
         if (name != null)
@@ -71,7 +72,7 @@ public class StudentRestService {
     @ApiOperation("Adds student to the database")
     @ApiResponses({
             @ApiResponse(code = 201, message = "Student added"),
-            @ApiResponse(code = 409, message = "Student with the same id already exists")
+            @ApiResponse(code = 409, message = "Student with the same album already exists")
     })
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -107,7 +108,7 @@ public class StudentRestService {
     @DELETE
     @Path("/{album}")
     @JWTTokenNeeded
-    @ApiOperation("Updates student with given album")
+    @ApiOperation("Removes student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student deleted"),
             @ApiResponse(code = 404, message = "Student with given album does not exist")

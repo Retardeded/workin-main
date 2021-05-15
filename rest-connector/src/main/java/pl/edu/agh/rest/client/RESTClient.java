@@ -65,9 +65,7 @@ public class RESTClient {
         Response response = target.request().get();
         int responseStatus = response.getStatus();
         if(responseStatus == 200) {
-            System.out.println("200");
             result = response.readEntity(new GenericType<List<Student>>() {});
-            System.out.println("200+");
         }
         response.close();
 
@@ -114,6 +112,17 @@ public class RESTClient {
         response.close();
     }
 
+    private void updateStudent(int album, Student student){
+        ResteasyWebTarget target = resteasyClient.target("http://localhost:8080/rest-api/api/students/"+album);
+        System.out.println("Updating student: "+student.toString());
+        if(token == null) {
+            authorize();
+        }
+        Response response = target.request().header("Authorization", token).put(Entity.entity(student, MediaType.APPLICATION_JSON_TYPE));
+        System.out.println("RESPONSE STATUS: "+response.getStatus());
+        response.close();
+    }
+
     private void displayAvatar(int id){
         byte[] result = null;
         ResteasyWebTarget target = resteasyClient.target("http://localhost:8080/rest-api/api/students/"+id+"/picture");
@@ -155,7 +164,7 @@ public class RESTClient {
 
         RESTClient consumer = new RESTClient("user3","user3");
         //printing all students
-        System.out.println("\nWszyscy studenci (id, imię, wiek, przedmioty):");
+        System.out.println("\nWszyscy studenci (id, imię, przedmioty):");
         for(Student student : consumer.getAllStudents(null)){
             System.out.println(student.toString());
         }
@@ -172,7 +181,7 @@ public class RESTClient {
         //printing with filtering
         MultivaluedMap<String, Object> query = new MultivaluedMapImpl<>();
         query.add("name","Jacek");
-        System.out.println("\nWszyscy studenci (id, imię, wiek, przedmioty) o imieniu Jacek:");
+        System.out.println("\nWszyscy studenci (id, imię, przedmioty) o imieniu Jacek:");
         for(Student student2 : consumer.getAllStudents(query)){
             System.out.println(student2.toString());
         }
@@ -194,9 +203,18 @@ public class RESTClient {
         System.out.println("\n");
         System.out.println(consumer.getStudentByIdProto(303030));
 
+        System.out.println("\n");
+        consumer.updateStudent(student22.getAlbum(),student22);
 
-        for(Student student3 : consumer.getAllStudents(query)){
+        for(Student student3 : consumer.getAllStudents(null)){
             System.out.println(student3.toString());
+        }
+
+        Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses);
+        consumer.updateStudent(student22.getAlbum(),studentUp);
+
+        for(Student student4 : consumer.getAllStudents(null)){
+            System.out.println(student4.toString());
         }
 
         consumer.endSession();
