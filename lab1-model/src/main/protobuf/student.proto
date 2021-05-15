@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pl.edu.agh.soa;
+option java_package = "pl.edu.agh.model";
+option java_outer_classname = "StudentProto";
+
+message Student{
+    string name = 2;
+    int32 album = 1;
+    string picturePath = 4;
+    repeated string courses = 5;
+}
