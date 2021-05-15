@@ -4,6 +4,7 @@ package pl.edu.agh.rest.lab;
 import org.jboss.annotation.security.SecurityDomain;
 import org.jboss.ws.api.annotation.WebContext;
 import pl.edu.agh.model.Student;
+import pl.edu.agh.model.StudentsList;
 
 import java.io.IOException;
 import java.net.URL;

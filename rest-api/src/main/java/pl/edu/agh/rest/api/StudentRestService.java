@@ -1,10 +1,10 @@
 package pl.edu.agh.rest.api;
 
 import io.swagger.annotations.*;
+import pl.edu.agh.model.StudentsList;
 import pl.edu.agh.rest.auth.JWTTokenNeeded;
 import pl.edu.agh.model.Student;
 import pl.edu.agh.model.StudentProto;
-import pl.edu.agh.model.StudentsDAO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Api(value = "Students API")
 public class StudentRestService {
 
-    private static StudentsDAO myDAO = new StudentsDAO().populateListWithDefaultData();
+    private static StudentsList studentList = new StudentsList().setDefaultData();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -35,7 +35,7 @@ public class StudentRestService {
             @QueryParam("age") int age,
             @QueryParam("course") List<String> courses
     ) {
-        List<Student> resultList = myDAO.getAllStudents();
+        List<Student> resultList = studentList.getAllStudents();
         if (name != null)
             resultList = resultList.stream().filter(student -> student.getName().equals(name)).
                     collect(Collectors.toList());
@@ -50,17 +50,17 @@ public class StudentRestService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
+    @Path("/{album}")
     @ApiOperation("Returns student with given ID")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student found"),
             @ApiResponse(code = 404, message = "Student with given id not found")
     })
-    public Response getStudentById(@ApiParam(required = true) @PathParam("id") int id) {
-        if (myDAO.getStudentById(id) == null) {
+    public Response getStudentById(@ApiParam(required = true) @PathParam("album") int album) {
+        if (studentList.getStudentByAlbum(album) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
-            return Response.status(Response.Status.OK).entity(myDAO.getStudentById(id)).build();
+            return Response.status(Response.Status.OK).entity(studentList.getStudentByAlbum(album)).build();
         }
     }
 
@@ -77,7 +77,7 @@ public class StudentRestService {
     public Response addStudent(@ApiParam(required = true, name = "New Student") Student student) {
 
         try {
-            myDAO.addStudent(student);
+            studentList.addStudent(student);
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception e) {
             return Response.status(Response.Status.CONFLICT).build();
@@ -85,7 +85,7 @@ public class StudentRestService {
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("/{album}")
     @JWTTokenNeeded
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -94,9 +94,9 @@ public class StudentRestService {
             @ApiResponse(code = 200, message = "Student updated"),
             @ApiResponse(code = 404, message = "Student with given id does not exist")
     })
-    public Response updateStudent(@ApiParam(required = true) @PathParam("id") int id, @ApiParam(required = true, name = "New Student") Student student) {
+    public Response updateStudent(@ApiParam(required = true) @PathParam("album") int album, @ApiParam(required = true, name = "New Student") Student student) {
         try {
-            myDAO.updateStudent(id, student);
+            studentList.updateStudent(album, student);
             return Response.status(Response.Status.OK).build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -104,29 +104,29 @@ public class StudentRestService {
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("/{album}")
     @JWTTokenNeeded
-    @ApiOperation("Updates student with given id")
+    @ApiOperation("Updates student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student deleted"),
-            @ApiResponse(code = 404, message = "Student with given id does not exist")
+            @ApiResponse(code = 404, message = "Student with given album does not exist")
     })
-    public Response deleteStudent(@ApiParam(required = true) @PathParam("id") int id) {
-        myDAO.removeStudentById(id);
+    public Response deleteStudent(@ApiParam(required = true) @PathParam("album") int album) {
+        studentList.removeStudentByAlbum(album);
         return Response.status(Response.Status.OK).build();
     }
 
     @GET
     @Produces("image/jpeg")
-    @Path("/{id}/avatar")
-    @ApiOperation("Returns avatar of student with given ID")
+    @Path("/{album}/picture")
+    @ApiOperation("Returns picture of student with given albums")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "Student found, avatar returned"),
-            @ApiResponse(code = 404, message = "Student with given id not found"),
+            @ApiResponse(code = 200, message = "Student found, picture returned"),
+            @ApiResponse(code = 404, message = "Student with given album not found"),
             @ApiResponse(code = 500, message = "Something went wrong during loading the image, try again later")
     })
-    public Response getAvatarById(@ApiParam(required = true) @PathParam("id") int id) {
-        Student student = myDAO.getStudentById(id);
+    public Response getPictureByAlbum(@ApiParam(required = true) @PathParam("album") int album) {
+        Student student = studentList.getStudentByAlbum(album);
         if (student == null)
             return Response.status(Response.Status.NOT_FOUND).build();
         Object result;
@@ -143,18 +143,18 @@ public class StudentRestService {
 
     @GET
     @Produces("application/protobuf")
-    @Path("/{id}/protobuf")
-    @ApiOperation("Returns student with given ID (in ProtoBuf)")
+    @Path("/{album}/protobuf")
+    @ApiOperation("Returns student with given album (in ProtoBuf)")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student found"),
-            @ApiResponse(code = 404, message = "Student with given id not found")
+            @ApiResponse(code = 404, message = "Student with given album not found")
     })
-    public Response getStudentByIdProto(@ApiParam(required = true) @PathParam("id") int id) {
-        if (myDAO.getStudentById(id) == null) {
+    public Response getStudentByAlbumProto(@ApiParam(required = true) @PathParam("album") int album) {
+        if (studentList.getStudentByAlbum(album) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             var studentBuilder = StudentProto.Student.newBuilder();
-            Student student = myDAO.getStudentById(id);
+            Student student = studentList.getStudentByAlbum(album);
             studentBuilder.setPicturePath(student.getPicturePath()).setAlbum(student.getAlbum()).setName(student.getName()).addAllCourses(student.getCourses());
             var newStudent = studentBuilder.build();
             return Response.status(Response.Status.OK).entity(newStudent).build();
