@@ -52,7 +52,7 @@ public class RestStudentService {
             @ApiResponse(code = 200, message = "Student found"),
             @ApiResponse(code = 404, message = "Student with given id not found")
     })
-    public Response getStudentById(@ApiParam(required = true) @PathParam("album") int album) {
+    public Response getStudentByAlbum(@ApiParam(required = true) @PathParam("album") int album) {
         if (studentList.getStudentByAlbum(album) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
