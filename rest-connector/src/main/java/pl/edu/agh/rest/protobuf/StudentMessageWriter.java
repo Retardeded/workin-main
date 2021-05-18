@@ -1,6 +1,6 @@
 package pl.edu.agh.rest.protobuf;
 
-import pl.edu.agh.rest.model.StudentProto;
+import pl.edu.agh.model.StudentProto;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;

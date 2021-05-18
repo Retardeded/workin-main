@@ -1,8 +1,8 @@
 pl\edu\agh\rest\auth\AuthService.class
+pl\edu\agh\rest\api\RestStudentService.class
 pl\edu\agh\rest\auth\JWTTokenNeededFilter.class
 pl\edu\agh\rest\auth\KeyGenerator.class
-pl\edu\agh\rest\protobuf\StudentMessageWriter.class
 pl\edu\agh\rest\auth\JWTTokenNeeded.class
 pl\edu\agh\rest\auth\KeyGenInterface.class
 pl\edu\agh\rest\StudentApp.class
-pl\edu\agh\rest\api\StudentRestService.class
+pl\edu\agh\rest\protobuf\MessageWriterStudent.class

@@ -117,6 +117,16 @@ public class StudentsList {
         student2.addCourse("Studio Projektowe");
         students.add(student2);
 
+        Student student3= new Student.Builder()
+                .withName("Czarek")
+                .withAlbum(393033)
+                .withPicturePath("Default.jpg")
+                .build();
+        student3.addCourse("Mobilne");
+        student3.addCourse("Kompilatory");
+        student3.addCourse("Studio Projektowe");
+        students.add(student3);
+
         return this;
     }
 

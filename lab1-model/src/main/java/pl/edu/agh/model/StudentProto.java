@@ -37,36 +37,36 @@ public final class StudentProto {
     int getAlbum();
 
     /**
-     * <code>string picturePath = 4;</code>
+     * <code>string picturePath = 3;</code>
      * @return The picturePath.
      */
     java.lang.String getPicturePath();
     /**
-     * <code>string picturePath = 4;</code>
+     * <code>string picturePath = 3;</code>
      * @return The bytes for picturePath.
      */
     com.google.protobuf.ByteString
         getPicturePathBytes();
 
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @return A list containing the courses.
      */
     java.util.List<java.lang.String>
         getCoursesList();
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @return The count of courses.
      */
     int getCoursesCount();
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @param index The index of the element to return.
      * @return The courses at the given index.
      */
     java.lang.String getCourses(int index);
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @param index The index of the value to return.
      * @return The bytes of the courses at the given index.
      */
@@ -133,13 +133,13 @@ public final class StudentProto {
               name_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               picturePath_ = s;
               break;
             }
-            case 42: {
+            case 34: {
               java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 courses_ = new com.google.protobuf.LazyStringArrayList();
@@ -229,10 +229,10 @@ public final class StudentProto {
       return album_;
     }
 
-    public static final int PICTUREPATH_FIELD_NUMBER = 4;
+    public static final int PICTUREPATH_FIELD_NUMBER = 3;
     private volatile java.lang.Object picturePath_;
     /**
-     * <code>string picturePath = 4;</code>
+     * <code>string picturePath = 3;</code>
      * @return The picturePath.
      */
     public java.lang.String getPicturePath() {
@@ -248,7 +248,7 @@ public final class StudentProto {
       }
     }
     /**
-     * <code>string picturePath = 4;</code>
+     * <code>string picturePath = 3;</code>
      * @return The bytes for picturePath.
      */
     public com.google.protobuf.ByteString
@@ -265,10 +265,10 @@ public final class StudentProto {
       }
     }
 
-    public static final int COURSES_FIELD_NUMBER = 5;
+    public static final int COURSES_FIELD_NUMBER = 4;
     private com.google.protobuf.LazyStringList courses_;
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @return A list containing the courses.
      */
     public com.google.protobuf.ProtocolStringList
@@ -276,14 +276,14 @@ public final class StudentProto {
       return courses_;
     }
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @return The count of courses.
      */
     public int getCoursesCount() {
       return courses_.size();
     }
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @param index The index of the element to return.
      * @return The courses at the given index.
      */
@@ -291,7 +291,7 @@ public final class StudentProto {
       return courses_.get(index);
     }
     /**
-     * <code>repeated string courses = 5;</code>
+     * <code>repeated string courses = 4;</code>
      * @param index The index of the value to return.
      * @return The bytes of the courses at the given index.
      */
@@ -321,10 +321,10 @@ public final class StudentProto {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
       if (!getPicturePathBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, picturePath_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, picturePath_);
       }
       for (int i = 0; i < courses_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, courses_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, courses_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -343,7 +343,7 @@ public final class StudentProto {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (!getPicturePathBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, picturePath_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, picturePath_);
       }
       {
         int dataSize = 0;
@@ -780,7 +780,7 @@ public final class StudentProto {
 
       private java.lang.Object picturePath_ = "";
       /**
-       * <code>string picturePath = 4;</code>
+       * <code>string picturePath = 3;</code>
        * @return The picturePath.
        */
       public java.lang.String getPicturePath() {
@@ -796,7 +796,7 @@ public final class StudentProto {
         }
       }
       /**
-       * <code>string picturePath = 4;</code>
+       * <code>string picturePath = 3;</code>
        * @return The bytes for picturePath.
        */
       public com.google.protobuf.ByteString
@@ -813,7 +813,7 @@ public final class StudentProto {
         }
       }
       /**
-       * <code>string picturePath = 4;</code>
+       * <code>string picturePath = 3;</code>
        * @param value The picturePath to set.
        * @return This builder for chaining.
        */
@@ -828,7 +828,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>string picturePath = 4;</code>
+       * <code>string picturePath = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearPicturePath() {
@@ -838,7 +838,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>string picturePath = 4;</code>
+       * <code>string picturePath = 3;</code>
        * @param value The bytes for picturePath to set.
        * @return This builder for chaining.
        */
@@ -862,7 +862,7 @@ public final class StudentProto {
          }
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @return A list containing the courses.
        */
       public com.google.protobuf.ProtocolStringList
@@ -870,14 +870,14 @@ public final class StudentProto {
         return courses_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @return The count of courses.
        */
       public int getCoursesCount() {
         return courses_.size();
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param index The index of the element to return.
        * @return The courses at the given index.
        */
@@ -885,7 +885,7 @@ public final class StudentProto {
         return courses_.get(index);
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param index The index of the value to return.
        * @return The bytes of the courses at the given index.
        */
@@ -894,7 +894,7 @@ public final class StudentProto {
         return courses_.getByteString(index);
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param index The index to set the value at.
        * @param value The courses to set.
        * @return This builder for chaining.
@@ -910,7 +910,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param value The courses to add.
        * @return This builder for chaining.
        */
@@ -925,7 +925,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param values The courses to add.
        * @return This builder for chaining.
        */
@@ -938,7 +938,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearCourses() {
@@ -948,7 +948,7 @@ public final class StudentProto {
         return this;
       }
       /**
-       * <code>repeated string courses = 5;</code>
+       * <code>repeated string courses = 4;</code>
        * @param value The bytes of the courses to add.
        * @return This builder for chaining.
        */
@@ -1032,7 +1032,7 @@ public final class StudentProto {
     java.lang.String[] descriptorData = {
       "\n\rstudent.proto\022\016pl.edu.agh.soa\"L\n\007Stude" +
       "nt\022\014\n\004name\030\002 \001(\t\022\r\n\005album\030\001 \001(\005\022\023\n\013pictu" +
-      "rePath\030\004 \001(\t\022\017\n\007courses\030\005 \003(\tB \n\020pl.edu." +
+      "rePath\030\003 \001(\t\022\017\n\007courses\030\004 \003(\tB \n\020pl.edu." +
       "agh.modelB\014StudentProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
