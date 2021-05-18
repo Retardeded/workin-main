@@ -5,7 +5,6 @@ import pl.edu.agh.model.StudentsList;
 import pl.edu.agh.rest.auth.JWTTokenNeeded;
 import pl.edu.agh.model.Student;
 import pl.edu.agh.model.StudentProto;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +14,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@EnableSwagger2
 @Path("/students")
 @Api(value = "Students API")
 public class StudentRestService {

@@ -7,6 +7,6 @@ option java_outer_classname = "StudentProto";
 message Student{
     string name = 2;
     int32 album = 1;
-    string picturePath = 4;
-    repeated string courses = 5;
+    string picturePath = 3;
+    repeated string courses = 4;
 }

@@ -17,5 +17,7 @@ public class StudentApp extends Application {
         beanConfig.setBasePath("/rest-api/api");
         beanConfig.setResourcePackage("pl.edu.agh.soa");
         beanConfig.setScan(true);
+
+
     }
 }
