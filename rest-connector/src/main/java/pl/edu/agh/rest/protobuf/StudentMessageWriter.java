@@ -21,6 +21,8 @@ import java.lang.reflect.Type;
 @Produces("application/protobuf")
 @Consumes("application/protobuf")
 public class StudentMessageWriter implements MessageBodyWriter, MessageBodyReader {
+
+
     @Override
     public boolean isReadable(Class type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return isStudentAssignableFrom(type);
