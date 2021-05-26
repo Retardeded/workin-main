@@ -111,6 +111,19 @@ public class ClientRest {
         response.close();
     }
 
+    private void addStudentNoAuth(Student student){
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/");
+        System.out.println("Adding student: "+student.toString());
+        if(token == null) {
+            authorizeUser();
+        }
+        System.out.println(token);
+        token = null;
+        Response response = target.request().header("NoAuthorization", token).post(Entity.entity(student, MediaType.APPLICATION_JSON_TYPE));
+        System.out.println("HTTP STATUS: "+response.getStatus());
+        response.close();
+    }
+
     private void updateStudent(int album, Student student){
         ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album);
         System.out.println("Updating student: "+student.toString());
@@ -176,10 +189,19 @@ public class ClientRest {
         client.addStudent(student);
         client.addStudent(student22);
 
+        System.out.println("\nadd Student no auth");
+        try {
+            Student student10000 = new Student("NieMaGo",99999, "defaultAvatar.jpg", courses);
+            client.addStudentNoAuth(student10000);
+        }
+        catch(Exception e) {
+
+        }
+
 
         MultivaluedMap<String, Object> query = new MultivaluedMapImpl<>();
         query.add("course","SOA");
-        System.out.println("\nWszyscy studenci (album, imię, przedmioty) o imieniu Jacek:");
+        System.out.println("\nWszyscy studenci (album, imię, przedmioty) z kursu SOA:");
         for(Student student2 : client.getAllStudents(query)){
             System.out.println(student2.toString());
         }
@@ -187,6 +209,14 @@ public class ClientRest {
 
         System.out.println("\nStudent o id 303030");
         System.out.println(client.getStudentByAlbum(303030).toString());
+
+        System.out.println("\nStudent o id 000000 (Nie istnieje");
+        try {
+            System.out.println(client.getStudentByAlbum(000000).toString());
+        }
+        catch(Exception e) {
+
+        }
 
 
         System.out.println("\n");
