@@ -39,6 +39,8 @@
         <module>soap-connector</module>
         <module>lab1-model</module>
         <module>rest-connector</module>
+        <module>lab1-dao</module>
+        <module>lab1-jpa</module>
     </modules>
 
     <properties>

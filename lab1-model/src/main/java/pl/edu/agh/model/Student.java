@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@XmlType(propOrder={"name","album","picturePath","courses"})
+@XmlType(propOrder={"name","album","picturePath","courses", "faculty"})
 public class Student {
 
     private String name;
     private Integer album;
     private String picturePath = "defaultPicture.jpg";
     private List<String> courses;
-
+    private Faculty faculty;
 
     public Student() {
     }
@@ -41,6 +41,11 @@ public class Student {
     public Student(String name, int album, String picturePath, List<String> courses) {
         this(name, album, picturePath);
         this.courses = courses;
+    }
+
+    public Student(String name, int album, String picturePath, List<String> courses, Faculty faculty) {
+        this(name, album, picturePath, courses);
+        this.faculty = faculty;
     }
 
     public String getName() {
@@ -73,6 +78,14 @@ public class Student {
         this.courses = courses;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public void addCourse(String c) {
         if(courses == null)
         {
@@ -86,6 +99,7 @@ public class Student {
         private Integer album;
         private String picturePath;
         private List<String> courses;
+        private Faculty faculty;
 
         public Builder() {
         }
@@ -114,12 +128,18 @@ public class Student {
             return this;
         }
 
+        public Builder withFaculty(Faculty faculty) {
+            this.faculty = faculty;
+            return this;
+        }
+
         public Student build() {
             Student student = new Student();
             student.setName(name);
             student.setAlbum(album);
             student.setPicturePath(picturePath);
             student.setCourses(courses);
+            student.setFaculty(faculty);
             return student;
         }
     }
@@ -130,6 +150,7 @@ public class Student {
         if (this.getCourses() != null){
             result += this.getCourses();
         }
+        result += ", " + this.getFaculty().getName() + "(dziekan - " + this.getFaculty().getDean().getDegree() + " " + this.getFaculty().getDean().getName() + ")";
 //        else{
 //            result += "";
 //        }

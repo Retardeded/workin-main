@@ -1,0 +1,7 @@
+pl\edu\agh\db\dao\FacultyDAO.class
+pl\edu\agh\db\mappers\StudentsMapper.class
+pl\edu\agh\db\dao\StudentsDAO.class
+pl\edu\agh\db\dao\StudentsInMemoryDAO.class
+pl\edu\agh\db\mappers\CoursesMapper.class
+pl\edu\agh\db\mappers\DeansMapper.class
+pl\edu\agh\db\mappers\FacultiesMapper.class

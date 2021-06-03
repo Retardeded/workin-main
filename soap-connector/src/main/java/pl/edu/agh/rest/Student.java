@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
+ *         &lt;element name="faculty" type="{http://lab.rest.agh.edu.pl/}faculty" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -45,7 +46,8 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "album",
     "picturePath",
-    "courses"
+    "courses",
+    "faculty"
 })
 public class Student {
 
@@ -53,6 +55,7 @@ public class Student {
     protected int album;
     protected String picturePath;
     protected Student.Courses courses;
+    protected Faculty faculty;
 
     /**
      * Gets the value of the name property.
@@ -140,6 +143,30 @@ public class Student {
      */
     public void setCourses(Student.Courses value) {
         this.courses = value;
+    }
+
+    /**
+     * Gets the value of the faculty property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Faculty }
+     *     
+     */
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    /**
+     * Sets the value of the faculty property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Faculty }
+     *     
+     */
+    public void setFaculty(Faculty value) {
+        this.faculty = value;
     }
 
 

@@ -4,6 +4,8 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.specimpl.MultivaluedMapImpl;
+import pl.edu.agh.model.Dean;
+import pl.edu.agh.model.Faculty;
 import pl.edu.agh.model.Student;
 import pl.edu.agh.model.StudentProto;
 import pl.edu.agh.rest.protobuf.StudentMessageWriter;
@@ -184,8 +186,10 @@ public class ClientRest {
         List<String> courses = new ArrayList<>();
         courses.add("Badania operacyjne");
         courses.add("Prawo autorskie");
-        Student student = new Student("Jacek",301111, "defaultAvatar.jpg", courses);
-        Student student22 = new Student("Jacek2",301112, "defaultAvatar.jpg", courses);
+        Dean dean = new Dean("dr hab. inż.", "Adam Kowalski");
+        Faculty faculty = new Faculty("WIEiT", dean);
+        Student student = new Student("Jacek",301111, "defaultAvatar.jpg", courses, faculty);
+        Student student22 = new Student("Jacek2",301112, "defaultAvatar.jpg", courses, faculty);
         client.addStudent(student);
         client.addStudent(student22);
 
@@ -223,8 +227,8 @@ public class ClientRest {
         client.displayPicture(303030);
 
 
-        System.out.println("\n");
-        client.removeStudent(student.getAlbum());
+        //System.out.println("\n");
+        //client.removeStudent(student.getAlbum());
 
 
         

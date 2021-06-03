@@ -203,6 +203,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Faculty }
+     * 
+     */
+    public Faculty createFaculty() {
+        return new Faculty();
+    }
+
+    /**
+     * Create an instance of {@link Dean }
+     * 
+     */
+    public Dean createDean() {
+        return new Dean();
+    }
+
+    /**
      * Create an instance of {@link Student.Courses }
      * 
      */

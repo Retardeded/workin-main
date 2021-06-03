@@ -1,0 +1,8 @@
+pl\edu\agh\db\entities\StudentEntity_.class
+pl\edu\agh\db\entities\DeanEntity_.class
+pl\edu\agh\db\entities\CourseEntity.class
+pl\edu\agh\db\entities\FacultyEntity_.class
+pl\edu\agh\db\entities\DeanEntity.class
+pl\edu\agh\db\entities\FacultyEntity.class
+pl\edu\agh\db\entities\StudentEntity.class
+pl\edu\agh\db\entities\CourseEntity_.class
