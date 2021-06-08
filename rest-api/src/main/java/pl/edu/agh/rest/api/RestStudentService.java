@@ -1,10 +1,9 @@
 package pl.edu.agh.rest.api;
 
 import io.swagger.annotations.*;
-import pl.edu.agh.db.dao.FacultyDAO;
-import pl.edu.agh.db.dao.StudentsDAO;
-import pl.edu.agh.model.Faculty;
-import pl.edu.agh.rest.auth.JWTTokenNeeded;
+import pl.edu.agh.soa.dao.ClubsDAO;
+import pl.edu.agh.soa.dao.StudentsDAO;
+import pl.edu.agh.model.Club;
 import pl.edu.agh.model.Student;
 import pl.edu.agh.model.StudentProto;
 
@@ -25,7 +24,7 @@ public class RestStudentService {
     @EJB
     StudentsDAO myDAO;
     @EJB
-    FacultyDAO facultyDAO;
+    ClubsDAO clubsDAO;
 
     //private static StudentsList studentList = new StudentsList().setDefaultData();
 
@@ -33,10 +32,10 @@ public class RestStudentService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/students")
+    @Path("/studentsThis")
     @ApiOperation("Returns list of all students")
     @ApiResponses({
-            @ApiResponse(code = 404, message = "No students found"),
+            @ApiResponse(code = 404, message = "No students found to"),
             @ApiResponse(code = 200, message = "Students found",
                     response = Student.class,
                     responseContainer = "List")
@@ -55,13 +54,13 @@ public class RestStudentService {
             }
         resultList = myDAO.getAllStudents(params);
         if (resultList.size() == 0)
-            return Response.status(Response.Status.NOT_FOUND).entity("No students found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("No students found ten: " + resultList.size()).build();
         return Response.status(Response.Status.OK).entity(resultList).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/students/{album}")
+    @Path("/studentsThis/{album}")
     @ApiOperation("Returns student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student found"),
@@ -76,8 +75,8 @@ public class RestStudentService {
     }
 
     @POST
-    @Path("/students/")
-    @JWTTokenNeeded
+    @Path("/studentsThis/")
+    //@JWTTokenNeeded
     @ApiOperation("Adds student to the database")
     @ApiResponses({
             @ApiResponse(code = 201, message = "Student added"),
@@ -96,8 +95,8 @@ public class RestStudentService {
     }
 
     @PUT
-    @Path("students/{album}")
-    @JWTTokenNeeded
+    @Path("/studentsThis/{album}")
+    //@JWTTokenNeeded
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation("Updates student with given album")
@@ -115,8 +114,8 @@ public class RestStudentService {
     }
 
     @DELETE
-    @Path("/students/{album}")
-    @JWTTokenNeeded
+    @Path("/studentsThis/{album}")
+    //@JWTTokenNeeded
     @ApiOperation("Removes student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student deleted"),
@@ -173,7 +172,7 @@ public class RestStudentService {
     }
 
     @POST
-    @Path("/students/defaultData")
+    @Path("/studentsThis/defaultData")
     @ApiOperation("Populates database with default data.")
     public Response populateDatabaseWithDefaultData(){
         myDAO.populateListWithDefaultData();
@@ -184,7 +183,7 @@ public class RestStudentService {
     @Path("/faculties")
     @ApiOperation("Get data about all faculties")
     public Response getAllFaculties(){
-        List<Faculty> resultList = facultyDAO.getAllFaculties();
+        List<Club> resultList = clubsDAO.getAllFaculties();
         if (resultList.size() == 0)
             return Response.status(Response.Status.NOT_FOUND).entity("No faculties found").build();
         return Response.status(Response.Status.OK).entity(resultList).build();

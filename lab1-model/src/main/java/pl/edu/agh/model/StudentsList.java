@@ -98,14 +98,14 @@ public class StudentsList {
 
     public StudentsList setDefaultData(){
 
-        Dean dean = new Dean("prof. dr hab. inż.", "Jan Nowak");
-        Faculty faculty = new Faculty("EAIiIB", dean);
+        ClubPresident clubPresident = new ClubPresident("prof. dr hab. inż.", "Jan Nowak");
+        Club club = new Club("EAIiIB", clubPresident);
 
         Student student = new Student.Builder()
                 .withName("Pioter")
                 .withAlbum(303030)
                 .withPicturePath("Default.jpg")
-                .withFaculty(faculty)
+                .withFaculty(club)
                 .build();
         student.addCourse("Mobilne");
         student.addCourse("SOA");
@@ -115,7 +115,7 @@ public class StudentsList {
                 .withName("Mateusz")
                 .withAlbum(303033)
                 .withPicturePath("Default.jpg")
-                .withFaculty(faculty)
+                .withFaculty(club)
                 .build();
         student2.addCourse("Mobilne");
         student2.addCourse("SOA");
@@ -126,7 +126,7 @@ public class StudentsList {
                 .withName("Czarek")
                 .withAlbum(393033)
                 .withPicturePath("Default.jpg")
-                .withFaculty(faculty)
+                .withFaculty(club)
                 .build();
         student3.addCourse("Mobilne");
         student3.addCourse("Kompilatory");

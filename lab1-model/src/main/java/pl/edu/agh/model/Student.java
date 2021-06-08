@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@XmlType(propOrder={"name","album","picturePath","courses", "faculty"})
+@XmlType(propOrder={"name","album","picturePath","courses", "club"})
 public class Student {
 
     private String name;
     private Integer album;
     private String picturePath = "defaultPicture.jpg";
     private List<String> courses;
-    private Faculty faculty;
+    private Club club;
 
     public Student() {
     }
@@ -43,9 +43,9 @@ public class Student {
         this.courses = courses;
     }
 
-    public Student(String name, int album, String picturePath, List<String> courses, Faculty faculty) {
+    public Student(String name, int album, String picturePath, List<String> courses, Club club) {
         this(name, album, picturePath, courses);
-        this.faculty = faculty;
+        this.club = club;
     }
 
     public String getName() {
@@ -78,12 +78,12 @@ public class Student {
         this.courses = courses;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public Club getClub() {
+        return club;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public void addCourse(String c) {
@@ -99,7 +99,7 @@ public class Student {
         private Integer album;
         private String picturePath;
         private List<String> courses;
-        private Faculty faculty;
+        private Club club;
 
         public Builder() {
         }
@@ -128,8 +128,8 @@ public class Student {
             return this;
         }
 
-        public Builder withFaculty(Faculty faculty) {
-            this.faculty = faculty;
+        public Builder withFaculty(Club club) {
+            this.club = club;
             return this;
         }
 
@@ -139,7 +139,7 @@ public class Student {
             student.setAlbum(album);
             student.setPicturePath(picturePath);
             student.setCourses(courses);
-            student.setFaculty(faculty);
+            student.setClub(club);
             return student;
         }
     }
@@ -150,7 +150,7 @@ public class Student {
         if (this.getCourses() != null){
             result += this.getCourses();
         }
-        result += ", " + this.getFaculty().getName() + "(dziekan - " + this.getFaculty().getDean().getDegree() + " " + this.getFaculty().getDean().getName() + ")";
+        result += ", " + this.getClub().getName() + "(przewodniczacy - " + this.getClub().getClubPresident().getName() + " - specjalność:" + this.getClub().getClubPresident().getSpeciality() + ")";
 //        else{
 //            result += "";
 //        }

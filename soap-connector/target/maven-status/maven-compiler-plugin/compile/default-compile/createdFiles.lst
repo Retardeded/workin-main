@@ -7,6 +7,7 @@ pl\edu\agh\rest\AddCourseToStudent.class
 pl\edu\agh\rest\GetBase64PictureByAlbumResponse.class
 pl\edu\agh\rest\AddStudentResponse.class
 pl\edu\agh\rest\UpdatePictureOfStudent.class
+pl\edu\agh\rest\Club.class
 pl\edu\agh\rest\GetAllStudentsResponse$Students.class
 pl\edu\agh\rest\Client.class
 pl\edu\agh\rest\DeleteStudentByAlbumResponse.class
@@ -20,6 +21,7 @@ pl\edu\agh\rest\GetStudentsByNameResponse.class
 pl\edu\agh\rest\Faculty.class
 pl\edu\agh\rest\GetAllStudentsResponse.class
 pl\edu\agh\rest\AddStudent.class
+pl\edu\agh\rest\ClubPresident.class
 pl\edu\agh\rest\GetStudentsByCourseResponse.class
 pl\edu\agh\rest\GetStudentByAlbumResponse.class
 pl\edu\agh\rest\GetAllStudents.class

@@ -203,19 +203,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Faculty }
+     * Create an instance of {@link Club }
      * 
      */
-    public Faculty createFaculty() {
-        return new Faculty();
+    public Club createClub() {
+        return new Club();
     }
 
     /**
-     * Create an instance of {@link Dean }
+     * Create an instance of {@link ClubPresident }
      * 
      */
-    public Dean createDean() {
-        return new Dean();
+    public ClubPresident createClubPresident() {
+        return new ClubPresident();
     }
 
     /**

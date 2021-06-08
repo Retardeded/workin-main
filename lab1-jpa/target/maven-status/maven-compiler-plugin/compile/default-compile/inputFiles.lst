@@ -1,4 +1,4 @@
-C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\db\entities\DeanEntity.java
-C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\db\entities\FacultyEntity.java
-C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\db\entities\StudentEntity.java
-C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\db\entities\CourseEntity.java
+C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\soa\entities\CourseEntity.java
+C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\soa\entities\ClubEntity.java
+C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\soa\entities\ClubPresidentEntity.java
+C:\mav\workin-main\lab1-jpa\src\main\java\pl\edu\agh\soa\entities\StudentEntity.java

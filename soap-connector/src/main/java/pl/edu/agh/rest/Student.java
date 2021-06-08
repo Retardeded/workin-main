@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="faculty" type="{http://lab.rest.agh.edu.pl/}faculty" minOccurs="0"/&gt;
+ *         &lt;element name="club" type="{http://lab.rest.agh.edu.pl/}club" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
     "album",
     "picturePath",
     "courses",
-    "faculty"
+    "club"
 })
 public class Student {
 
@@ -55,7 +55,7 @@ public class Student {
     protected int album;
     protected String picturePath;
     protected Student.Courses courses;
-    protected Faculty faculty;
+    protected Club club;
 
     /**
      * Gets the value of the name property.
@@ -146,27 +146,27 @@ public class Student {
     }
 
     /**
-     * Gets the value of the faculty property.
+     * Gets the value of the club property.
      * 
      * @return
      *     possible object is
-     *     {@link Faculty }
+     *     {@link Club }
      *     
      */
-    public Faculty getFaculty() {
-        return faculty;
+    public Club getClub() {
+        return club;
     }
 
     /**
-     * Sets the value of the faculty property.
+     * Sets the value of the club property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Faculty }
+     *     {@link Club }
      *     
      */
-    public void setFaculty(Faculty value) {
-        this.faculty = value;
+    public void setClub(Club value) {
+        this.club = value;
     }
 
 

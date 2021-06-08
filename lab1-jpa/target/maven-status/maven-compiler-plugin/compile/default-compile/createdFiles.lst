@@ -1,8 +1,8 @@
-pl\edu\agh\db\entities\StudentEntity_.class
-pl\edu\agh\db\entities\DeanEntity_.class
-pl\edu\agh\db\entities\CourseEntity.class
-pl\edu\agh\db\entities\FacultyEntity_.class
-pl\edu\agh\db\entities\DeanEntity.class
-pl\edu\agh\db\entities\FacultyEntity.class
-pl\edu\agh\db\entities\StudentEntity.class
-pl\edu\agh\db\entities\CourseEntity_.class
+pl\edu\agh\soa\entities\ClubPresidentEntity_.class
+pl\edu\agh\soa\entities\StudentEntity_.class
+pl\edu\agh\soa\entities\StudentEntity.class
+pl\edu\agh\soa\entities\ClubEntity_.class
+pl\edu\agh\soa\entities\CourseEntity.class
+pl\edu\agh\soa\entities\ClubEntity.class
+pl\edu\agh\soa\entities\CourseEntity_.class
+pl\edu\agh\soa\entities\ClubPresidentEntity.class

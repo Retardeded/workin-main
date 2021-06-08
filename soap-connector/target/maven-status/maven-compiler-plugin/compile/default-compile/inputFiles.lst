@@ -12,6 +12,7 @@ C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\DeleteStudentByA
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetStudentsByCourse.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetBase64PictureByAlbum.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\ObjectFactory.java
+C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\Club.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\AddStudent.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetBase64PictureByAlbumResponse.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetStudentByAlbumResponse.java
@@ -21,6 +22,7 @@ C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\StudentServiceSe
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetStudentsByCourseResponse.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\AddStudentResponse.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetStudentByAlbum.java
+C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\ClubPresident.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\AddCourseToStudentResponse.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\Faculty.java
 C:\mav\workin-main\soap-connector\src\main\java\pl\edu\agh\rest\GetStudentsByName.java
