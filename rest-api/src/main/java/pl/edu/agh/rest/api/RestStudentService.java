@@ -32,7 +32,7 @@ public class RestStudentService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/studentsThis")
+    @Path("/students")
     @ApiOperation("Returns list of all students")
     @ApiResponses({
             @ApiResponse(code = 404, message = "No students found to"),
@@ -60,7 +60,7 @@ public class RestStudentService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/studentsThis/{album}")
+    @Path("/students/{album}")
     @ApiOperation("Returns student with given album")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Student found"),
@@ -75,7 +75,7 @@ public class RestStudentService {
     }
 
     @POST
-    @Path("/studentsThis/")
+    @Path("/students/")
     //@JWTTokenNeeded
     @ApiOperation("Adds student to the database")
     @ApiResponses({
@@ -95,7 +95,7 @@ public class RestStudentService {
     }
 
     @PUT
-    @Path("/studentsThis/{album}")
+    @Path("/students/{album}")
     //@JWTTokenNeeded
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -114,7 +114,7 @@ public class RestStudentService {
     }
 
     @DELETE
-    @Path("/studentsThis/{album}")
+    @Path("/students/{album}")
     //@JWTTokenNeeded
     @ApiOperation("Removes student with given album")
     @ApiResponses({
@@ -171,21 +171,14 @@ public class RestStudentService {
         }
     }
 
-    @POST
-    @Path("/studentsThis/defaultData")
-    @ApiOperation("Populates database with default data.")
-    public Response populateDatabaseWithDefaultData(){
-        myDAO.populateListWithDefaultData();
-        return Response.status(Response.Status.OK).build();
-    }
-
     @GET
-    @Path("/faculties")
-    @ApiOperation("Get data about all faculties")
-    public Response getAllFaculties(){
-        List<Club> resultList = clubsDAO.getAllFaculties();
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/clubs")
+    @ApiOperation("Get data about all clubs")
+    public Response getAllClubs(){
+        List<Club> resultList = clubsDAO.getAllClubs();
         if (resultList.size() == 0)
-            return Response.status(Response.Status.NOT_FOUND).entity("No faculties found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("No clubs found").build();
         return Response.status(Response.Status.OK).entity(resultList).build();
     }
 

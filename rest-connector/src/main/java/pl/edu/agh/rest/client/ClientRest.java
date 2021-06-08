@@ -50,20 +50,9 @@ public class ClientRest {
         token = headers.getFirst("authorization");
     }
 
-    private void fillDefaultData(){
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/defaultData");
-        System.out.println("Populating: ");
-        if(token == null) {
-            authorizeUser();
-        }
-        Response response = target.request().header("Authorization", token).post(Entity.entity(null, MediaType.APPLICATION_JSON_TYPE));
-        System.out.println("HTTP STATUS: "+response.getStatus());
-        response.close();
-    }
-
     private List<Student> getAllStudents(MultivaluedMap<String, Object> params) {
         List<Student> result = null;
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/");
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/");
 
         System.out.println("Getting all students");
         if(params != null && !params.isEmpty()) {
@@ -85,9 +74,26 @@ public class ClientRest {
         return result;
     }
 
+    private List<Club> getAllClubs() {
+        List<Club> result = null;
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/clubs/");
+
+        System.out.println("Getting all clubs");
+
+        Response response = target.request().get();
+        int responseStatus = response.getStatus();
+        if(responseStatus == 200) {
+            result = response.readEntity(new GenericType<List<Club>>() {});
+        }
+        response.close();
+
+        System.out.println("HTTP STATUS: "+responseStatus);
+        return result;
+    }
+
     private Student getStudentByAlbum(int album){
         Student result = null;
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/"+album);
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album);
         System.out.println("Getting student with album "+album);
         Response response = target.request().get();
         int responseStatus = response.getStatus();
@@ -101,7 +107,7 @@ public class ClientRest {
 
     private StudentProto.Student getStudentByAlbumProto(int album){
         StudentProto.Student result = null;
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/"+album+"/protobuf").register(StudentMessageWriter.class);
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album+"/protobuf").register(StudentMessageWriter.class);
         System.out.println("Getting student with album "+album+"(ProtoBuf)");
         Response response = target.request().get();
         int responseStatus = response.getStatus();
@@ -114,7 +120,7 @@ public class ClientRest {
     }
 
     private void addStudent(Student student){
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/");
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/");
         System.out.println("Adding student: "+student.toString());
         if(token == null) {
             authorizeUser();
@@ -125,7 +131,7 @@ public class ClientRest {
     }
 
     private void addStudentNoAuth(Student student){
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/");
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/");
         System.out.println("Adding student: "+student.toString());
         if(token == null) {
             authorizeUser();
@@ -138,7 +144,7 @@ public class ClientRest {
     }
 
     private void updateStudent(int album, Student student){
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/"+album);
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album);
         System.out.println("Updating student: "+student.toString());
         if(token == null) {
             authorizeUser();
@@ -150,7 +156,7 @@ public class ClientRest {
 
     private void displayPicture(int album){
         byte[] result = null;
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/"+album+"/picture");
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album+"/picture");
         System.out.println("Getting picture of student with album "+album);
         Response response = target.request().get();
         int responseStatus = response.getStatus();
@@ -172,9 +178,9 @@ public class ClientRest {
         jFrame.setVisible(true);
     }
 
-    private void removeStudent(int id){
-        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/studentsThis/"+id);
-        System.out.println("Removing student with id "+id);
+    private void removeStudent(int album){
+        ResteasyWebTarget target = restClient.target("http://localhost:8080/rest-api/api/students/"+album);
+        System.out.println("Removing student with album "+album);
         if(token == null) {
             authorizeUser();
         }
@@ -186,24 +192,25 @@ public class ClientRest {
 
     public static void main(String[] args) {
 
-        System.out.println("cos");
 
         ClientRest client = new ClientRest("user3","user3");
 
-        //client.fillDefaultData();
-        System.out.println("cos");
 
         List<String> courses = new ArrayList<>();
+        List<String> courses2 = new ArrayList<>();
         courses.add("Badania operacyjne");
+        courses.add("SOA");
+        courses2.add("Badania operacyjne");
         ClubPresident clubPresident = new ClubPresident("Kraul", "Mariusz");
         Club club = new Club("Klub Plywacki", clubPresident);
+        ClubPresident clubPresident2 = new ClubPresident("Gambit", "Marek");
+        Club club2 = new Club("Klub Szachowy", clubPresident2);
         Student student11 = new Student("Jacek",304111, "defaultAvatar.jpg", courses, club);
-        //Student student22 = new Student("NieJacek2",303312, "defaultAvatar.jpg", courses, faculty);
+        Student student22 = new Student("Jakub",303312, "defaultAvatar.jpg", courses2, club);
+        Student student33 = new Student("Maciej",333333, "defaultAvatar.jpg", courses, club2);
         client.addStudent(student11);
-        //client.addStudent(student22);
-        System.out.println("cos");
-
-
+        client.addStudent(student22);
+        client.addStudent(student33);
 
 
         System.out.println("\nWszyscy studenci (album, imię, przedmioty):");
@@ -212,26 +219,38 @@ public class ClientRest {
         }
 
         MultivaluedMap<String, Object> query = new MultivaluedMapImpl<>();
-        query.add("name","Jacek");
-        System.out.println("\nWszyscy studenci (id, imię, wiek, przedmioty) o imieniu Jacek:");
+        query.add("course","SOA");
+        System.out.println("\nWszyscy studenci (album, imię, przedmioty) z kursu SOA:");
         for(Student student2 : client.getAllStudents(query)){
             System.out.println(student2.toString());
         }
 
-        System.out.println("\nStudent o albumie 3");
-        //System.out.println(client.getStudentByAlbum(3).toString());
+        System.out.println("\nWszystkie kluby:");
+        for(Club club11 : client.getAllClubs()){
+            System.out.println(club11.toString());
+        }
 
+
+
+        System.out.println("\nStudent o albumie 303312");
+        System.out.println(client.getStudentByAlbum(303312).toString());
         //not works client.displayPicture(3);
-
-        // client.removeStudent(4);
+        client.removeStudent(student22.getAlbum());
 
         System.out.println("\nWszyscy studenci (album, imię, przedmioty):");
         for(Student student : client.getAllStudents(null)){
             System.out.println(student.toString());
         }
 
+        System.out.println("\n");
+        System.out.println(client.getStudentByAlbumProto(304111));
 
-        //System.out.println(client.getStudentByAlbum(3));
+        Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses, club2);
+        client.updateStudent(student11.getAlbum(),studentUp);
+
+        for(Student student4 : client.getAllStudents(null)){
+            System.out.println(student4.toString());
+        }
 
 
         /*
@@ -242,17 +261,6 @@ public class ClientRest {
         }
         catch(Exception e) {
 
-        }
-
-         */
-
-
-        /*
-        MultivaluedMap<String, Object> query = new MultivaluedMapImpl<>();
-        query.add("course","SOA");
-        System.out.println("\nWszyscy studenci (album, imię, przedmioty) z kursu SOA:");
-        for(Student student2 : client.getAllStudents(query)){
-            System.out.println(student2.toString());
         }
 
          */
@@ -268,36 +276,6 @@ public class ClientRest {
         }
         catch(Exception e) {
 
-        }
-
-        System.out.println("\n");
-        client.displayPicture(303030);
-
-
-         */
-
-
-        //System.out.println("\n");
-        //client.removeStudent(student.getAlbum());
-
-        /*
-
-        
-        System.out.println("\n");
-        System.out.println(client.getStudentByAlbumProto(303030));
-
-        System.out.println("\n");
-        client.updateStudent(student22.getAlbum(),student22);
-
-        for(Student student3 : client.getAllStudents(null)){
-            System.out.println(student3.toString());
-        }
-
-        Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses);
-        client.updateStudent(student22.getAlbum(),studentUp);
-
-        for(Student student4 : client.getAllStudents(null)){
-            System.out.println(student4.toString());
         }
 
          */

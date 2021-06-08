@@ -37,4 +37,14 @@ public class Club {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        String result = this.getId() + " " + this.getName() + " ";
+        result += "Przewodniczacy " + this.getClubPresident().getName();
+//        else{
+//            result += "";
+//        }
+        return result;
+    }
 }

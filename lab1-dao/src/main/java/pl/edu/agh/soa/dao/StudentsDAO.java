@@ -65,9 +65,6 @@ public class StudentsDAO{
 
     public void addStudent(Student student){
 
-        System.out.println(student.getAlbum());
-        System.out.println(student.getName());
-
         StudentEntity studentEntity = StudentsMapper.modelToEntity(student);
         studentEntity.setCourses(new HashSet<>());
         for(String course : student.getCourses()){
@@ -136,25 +133,6 @@ public class StudentsDAO{
         studentEntity.setAlbum(album);
         em.merge(studentEntity);
         return student;
-    }
-    public void populateListWithDefaultData() {
-        ArrayList<String> courses = new ArrayList<>();
-        ClubPresident clubPresident = new ClubPresident("prof. dr hab. inż.", "Jan Nowak");
-        Club club = new Club("EAIiIB", clubPresident);
-        courses.add("SOA");
-        courses.add("Technologie Mobilne");
-        courses.add("Kompilatory");
-        courses.add("Interfejsy multimodalne");
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(new Student("Jacek",303030, "Default.jpg", courses, club));
-        students.add(new Student("Kasia",333333, "Default.jpg", courses, club));
-        students.add(new Student("Basia",313131, "Default.jpg", courses, club));
-        students.add(new Student("Kasia", 323232, "Default.jpg", courses, club));
-        students.add(new Student("Jacek", 5, "Default.jpg", courses));
-        for (Student student : students){
-            addStudent(student);
-        }
-//        addStudent(new Student("A", 1, 21, courses, faculty));
     }
 
 }

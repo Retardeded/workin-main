@@ -12,7 +12,6 @@ public class StudentEntity {
     @Column
     private String name;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "studentAlbum")
     private int album;

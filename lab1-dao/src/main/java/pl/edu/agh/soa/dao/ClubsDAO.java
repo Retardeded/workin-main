@@ -18,7 +18,7 @@ public class ClubsDAO {
     @PersistenceContext(unitName = "studentsThis")
     EntityManager em;
 
-    public List<Club> getAllFaculties() {
+    public List<Club> getAllClubs() {
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery<ClubEntity> criteriaQuery = builder.createQuery(ClubEntity.class);
         Root<ClubEntity> root = criteriaQuery.from(ClubEntity.class);

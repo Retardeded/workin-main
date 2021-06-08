@@ -2,6 +2,7 @@ package pl.edu.agh.soa.entities;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "clubs")
@@ -16,6 +17,14 @@ public class ClubEntity {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private ClubPresidentEntity clubPresident;
 
+    /*
+    @OneToMany()
+    private Set<StudentEntity> students;
+    public Set<StudentEntity> getStudents() {
+        return students;
+    }
+
+     */
 
     public int getId() {
         return id;
@@ -37,7 +46,7 @@ public class ClubEntity {
         return clubPresident;
     }
 
-    public void setClubPresident(ClubPresidentEntity dean) {
-        this.clubPresident = dean;
+    public void setClubPresident(ClubPresidentEntity clubPresident) {
+        this.clubPresident = clubPresident;
     }
 }
