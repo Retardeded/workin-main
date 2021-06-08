@@ -1,6 +1,7 @@
 package pl.edu.agh.soa.entities;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -10,6 +11,7 @@ public abstract class ClubEntity_ {
 
 	public static volatile SingularAttribute<ClubEntity, String> name;
 	public static volatile SingularAttribute<ClubEntity, ClubPresidentEntity> clubPresident;
+	public static volatile SetAttribute<ClubEntity, StudentEntity> students;
 	public static volatile SingularAttribute<ClubEntity, Integer> id;
 
 }

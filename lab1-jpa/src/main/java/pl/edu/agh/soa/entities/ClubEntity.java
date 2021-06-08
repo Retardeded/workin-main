@@ -10,6 +10,7 @@ public class ClubEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "clubId")
     private int id;
 
     private String name;
@@ -17,14 +18,18 @@ public class ClubEntity {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private ClubPresidentEntity clubPresident;
 
-    /*
-    @OneToMany()
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "student_clubs",
+            joinColumns = {@JoinColumn(name = "clubId")},
+            inverseJoinColumns = {@JoinColumn(name = "studentAlbum")})
     private Set<StudentEntity> students;
     public Set<StudentEntity> getStudents() {
         return students;
     }
-
-     */
+    public void setStudents(Set<StudentEntity> students) {
+        this.students = students;
+    }
 
     public int getId() {
         return id;

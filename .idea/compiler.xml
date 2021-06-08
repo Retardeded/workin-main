@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rest-api" />
         <module name="lab1-dao" />
-        <module name="zadanie1" />
+        <module name="soap-connector" />
+        <module name="rest-api" />
         <module name="lab1-ear" />
         <module name="lab1-model" />
         <module name="soap-api" />
-        <module name="soap-connector" />
+        <module name="zadanie1" />
         <module name="rest-connector" />
         <module name="lab1-jpa" />
         <module name="zadanko1.1" />

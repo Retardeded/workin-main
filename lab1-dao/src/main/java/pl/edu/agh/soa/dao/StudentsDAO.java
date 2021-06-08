@@ -97,10 +97,14 @@ public class StudentsDAO{
                 }
             }
             studentEntity.setClub(clubEntity);
+            if(clubEntity.getStudents() == null) {
+                clubEntity.setStudents(new HashSet<>());
+            }
+            clubEntity.getStudents().add(studentEntity);
+            //clubEntity.setStudents(studentEntity);
+            em.persist(clubEntity);
         }
-//        studentEntity.setName((String.valueOf(studentEntity.getId())));
-        //em.persist(studentEntity);
-        em.merge(studentEntity);
+        em.persist(studentEntity);
     }
 
     public Student getStudentByAlbum(int album) {

@@ -205,13 +205,18 @@ public class ClientRest {
         Club club = new Club("Klub Plywacki", clubPresident);
         ClubPresident clubPresident2 = new ClubPresident("Gambit", "Marek");
         Club club2 = new Club("Klub Szachowy", clubPresident2);
-        Student student11 = new Student("Jacek",304111, "defaultAvatar.jpg", courses, club);
-        Student student22 = new Student("Jakub",303312, "defaultAvatar.jpg", courses2, club);
-        Student student33 = new Student("Maciej",333333, "defaultAvatar.jpg", courses, club2);
+        Student student11 = new Student("Jacek",304111, "defaultPicture.jpg", courses, club);
+        Student student22 = new Student("Jakub",303312, "defaultPicture.jpg", courses2, club);
+        Student student33 = new Student("Maciej",333333, "defaultPicture.jpg", courses, club2);
+        Student student44 = new Student("Mateusz",3232323, "defaultPicture.jpg", courses, club);
+        Student student55 = new Student("Jan",121212, "defaultPicture.jpg", courses2, club2);
+        Student student66 = new Student("Janusz",21212121, "defaultPicture.jpg", courses2, club);
         client.addStudent(student11);
         client.addStudent(student22);
         client.addStudent(student33);
-
+        client.addStudent(student44);
+        client.addStudent(student55);
+        client.addStudent(student66);
 
         System.out.println("\nWszyscy studenci (album, imię, przedmioty):");
         for(Student student : client.getAllStudents(null)){
@@ -245,8 +250,8 @@ public class ClientRest {
         System.out.println("\n");
         System.out.println(client.getStudentByAlbumProto(304111));
 
-        Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses, club2);
-        client.updateStudent(student11.getAlbum(),studentUp);
+        //Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses, club2);
+        //client.updateStudent(student11.getAlbum(),studentUp);
 
         for(Student student4 : client.getAllStudents(null)){
             System.out.println(student4.toString());

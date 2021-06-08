@@ -19,11 +19,13 @@ public class StudentEntity {
     @Column
     private String avatarPath = "defaultAvatar.jpg";
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "student_courses",
+            joinColumns = {@JoinColumn(name = "studentAlbum")},
+            inverseJoinColumns = {@JoinColumn(name = "courseid")})
     private Set<CourseEntity> courses;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private ClubEntity club;
 
 
