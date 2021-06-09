@@ -101,7 +101,6 @@ public class StudentsDAO{
                 clubEntity.setStudents(new HashSet<>());
             }
             clubEntity.getStudents().add(studentEntity);
-            //clubEntity.setStudents(studentEntity);
             em.persist(clubEntity);
         }
         em.persist(studentEntity);

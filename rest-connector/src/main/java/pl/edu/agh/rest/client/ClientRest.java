@@ -211,12 +211,14 @@ public class ClientRest {
         Student student44 = new Student("Mateusz",3232323, "defaultPicture.jpg", courses, club);
         Student student55 = new Student("Jan",121212, "defaultPicture.jpg", courses2, club2);
         Student student66 = new Student("Janusz",21212121, "defaultPicture.jpg", courses2, club);
+        Student student77 = new Student("Jaromir",212121, "defaultPicture.jpg", courses2, club);
         client.addStudent(student11);
         client.addStudent(student22);
         client.addStudent(student33);
         client.addStudent(student44);
         client.addStudent(student55);
         client.addStudent(student66);
+        client.addStudent(student77);
 
         System.out.println("\nWszyscy studenci (album, imię, przedmioty):");
         for(Student student : client.getAllStudents(null)){
@@ -237,21 +239,21 @@ public class ClientRest {
 
 
 
-        System.out.println("\nStudent o albumie 303312");
-        System.out.println(client.getStudentByAlbum(303312).toString());
+        System.out.println("\nStudent o albumie 333333");
+        System.out.println(client.getStudentByAlbum(333333).toString());
         //not works client.displayPicture(3);
-        client.removeStudent(student22.getAlbum());
+        client.removeStudent(333333);
 
         System.out.println("\nWszyscy studenci (album, imię, przedmioty):");
         for(Student student : client.getAllStudents(null)){
             System.out.println(student.toString());
         }
 
-        System.out.println("\n");
-        System.out.println(client.getStudentByAlbumProto(304111));
+        //System.out.println("\n");
+        //System.out.println(client.getStudentByAlbumProto(304111));
 
-        //Student studentUp = new Student("JacekUp",301112, "defaultAvatar.jpg", courses, club2);
-        //client.updateStudent(student11.getAlbum(),studentUp);
+        Student studentUp = new Student("JacekUpUP",301112, "defaultAvatar.jpg", courses, club2);
+        client.updateStudent(student11.getAlbum(),studentUp);
 
         for(Student student4 : client.getAllStudents(null)){
             System.out.println(student4.toString());

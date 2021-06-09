@@ -1,7 +1,0 @@
-pl\edu\agh\soa\dao\StudentsDAO.class
-pl\edu\agh\soa\mappers\StudentsMapper.class
-pl\edu\agh\soa\mappers\ClubsMapper.class
-pl\edu\agh\soa\mappers\ClubPresidentsMapper.class
-pl\edu\agh\soa\dao\StudentsInMemoryDAO.class
-pl\edu\agh\soa\mappers\CoursesMapper.class
-pl\edu\agh\soa\dao\ClubsDAO.class
